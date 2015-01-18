@@ -18,12 +18,12 @@ var str = '<div style="height:500px; background-image: url(<%= img %>);"';
 str += ' data-foo="<%= foo %>"><%= text %> <%= count %></div>';
 
 var options = {
+  el: document.body,
   template: template(str),
   data: { 
     count: 0,
     text: 'pizzzzzaaaaa',
-    img: 'http://a.fod4.com/misc/Internet%20Pizza.gif',
-    foo: 'bar'
+    img: 'http://a.fod4.com/misc/Internet%20Pizza.gif'
   }
 };
 
@@ -38,8 +38,6 @@ setInterval(function () {
 
   counter.set(options.data);
 }, 2700);
-
-counter.appendTo(document.body);
 ```
 
 ## Install

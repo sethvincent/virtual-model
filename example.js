@@ -11,7 +11,6 @@ var options = {
     count: 0,
     text: 'pizzzzzaaaaa',
     img: 'http://a.fod4.com/misc/Internet%20Pizza.gif',
-    foo: 'bar',
     wat: {
       nested: 'stuff'
     }
