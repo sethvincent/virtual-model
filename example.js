@@ -5,6 +5,7 @@ var str = '<div style="height:500px; background-image: url(<%= img %>);"';
 str += ' data-foo="<%= foo %>"><%= text %> <%= count %></div>';
 
 var options = {
+  el: document.body,
   template: template(str),
   data: { 
     count: 0,
@@ -18,7 +19,6 @@ var options = {
 };
 
 var counter = model(options);
-counter.render();
 
 setInterval(function () {
   options.data.count += 2;
@@ -29,10 +29,3 @@ setInterval(function () {
 
   counter.set('count', options.data.count);
 }, 2700);
-
-counter.on('change', function (data) {
-  console.log('waaaaaa');
-});
-
-counter.set('wat.nested', 'did it');
-console.log(counter.get('wat.nested'))
