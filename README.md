@@ -2,6 +2,8 @@
 
 Turn a template into a virtual dom. 
 
+## See also
+
 `virtual-model` uses [virtual-dom](http://npmjs.org/virtual-dom), [virtual-html](http://npmjs.org/virtual-html), and [observify](http://npmjs.org/observify).
 
 This project is called virtual-model, but it really acts as both a model & view, similar to projects like [Ractive](https://github.com/ractivejs/ractive) and [Vue.js](https://github.com/yyx990803/vue), and was inspired by [ampersand-virtual-dom-mixin](https://www.npmjs.com/package/ampersand-virtual-dom-mixin).
