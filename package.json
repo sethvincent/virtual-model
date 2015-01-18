@@ -12,13 +12,12 @@
   },
   "dependencies": {
     "amp-is-string": "^1.0.1",
-    "lodash.template": "^2.4.1",
     "observify": "^1.1.0",
     "virtual-dom": "^1.1.0",
     "virtual-html": "^0.1.0"
   },
   "devDependencies": {
-    "mustache": "^1.0.0",
+    "lodash.template": "^2.4.1",
     "tape": "^3.2.0",
     "wzrd": "^1.2.1"
   }
