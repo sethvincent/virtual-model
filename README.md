@@ -42,6 +42,12 @@ setInterval(function () {
 counter.appendTo(document.body);
 ```
 
+## Install
+
+```
+npm install --save virtual-model
+```
+
 ## Usage
 
 ### var model = require('virtual-model');
