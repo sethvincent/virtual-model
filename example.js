@@ -1,11 +1,11 @@
-var Handlebars = require('handlebars');
+var template = require('mustache');
 var model = require('./index');
 
 var str = '<div style="height:500px; background-image: url({{ img }});"';
 str += ' data-foo="{{ foo }}">{{ text }} {{ count }}</div>';
 
 var options = {
-  template: Handlebars.compile(str),
+  template: template(str),
   data: { 
     count: 0,
     text: 'pizzzzzaaaaa',

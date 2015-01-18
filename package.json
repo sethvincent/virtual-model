@@ -17,7 +17,7 @@
     "virtual-html": "^0.1.0"
   },
   "devDependencies": {
-    "handlebars": "^2.0.0",
+    "mustache": "^1.0.0",
     "tape": "^3.2.0",
     "wzrd": "^1.2.1"
   }
