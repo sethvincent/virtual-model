@@ -1,0 +1,24 @@
+{
+  "name": "virtual-model",
+  "description": "turn templates into virtual dom",
+  "version": "1.0.0",
+  "repository": {
+    "url": "git://github.com/sethvincent/virtual-model.git"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "start": "wzrd example.js"
+  },
+  "dependencies": {
+    "amp-is-string": "^1.0.1",
+    "observify": "^1.1.0",
+    "virtual-dom": "^1.1.0",
+    "virtual-html": "^0.1.0"
+  },
+  "devDependencies": {
+    "handlebars": "^2.0.0",
+    "tape": "^3.2.0",
+    "wzrd": "^1.2.1"
+  }
+}
