@@ -1,7 +1,7 @@
 {
   "name": "virtual-model",
   "description": "turn templates into virtual dom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "url": "git://github.com/sethvincent/virtual-model.git"
   },
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "amp-is-string": "^1.0.1",
+    "lodash.template": "^2.4.1",
     "observify": "^1.1.0",
     "virtual-dom": "^1.1.0",
     "virtual-html": "^0.1.0"

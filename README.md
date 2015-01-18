@@ -11,11 +11,11 @@ This project is called virtual-model, but it really acts as both a model & view,
 ## Example
 
 ```
-var template = require('mustache');
-var model = require('./index');
+var template = require('lodash.template');
+var model = require('virtual-model');
 
-var str = '<div style="height:500px; background-image: url({{ img }});"';
-str += ' data-foo="{{ foo }}">{{ text }} {{ count }}</div>';
+var str = '<div style="height:500px; background-image: url(<%= img %>);"';
+str += ' data-foo="<%= foo %>"><%= text %> <%= count %></div>';
 
 var options = {
   template: template(str),

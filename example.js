@@ -1,10 +1,11 @@
-var template = require('mustache');
+var template = require('lodash.template');
 var model = require('./index');
 
-var str = '<div style="height:500px; background-image: url({{ img }});"';
-str += ' data-foo="{{ foo }}">{{ text }} {{ count }}</div>';
+var str = '<div style="height:500px; background-image: url(<%= img %>);"';
+str += ' data-foo="<%= foo %>"><%= text %> <%= count %></div>';
 
 var options = {
+  el: document.body,
   template: template(str),
   data: { 
     count: 0,
@@ -25,5 +26,3 @@ setInterval(function () {
 
   counter.set(options.data);
 }, 2700);
-
-counter.appendTo(document.body);

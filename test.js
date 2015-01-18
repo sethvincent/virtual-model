@@ -1,5 +1,5 @@
 var test = require('tape');
-var Handlebars = require('handlebars');
+var template = require('lodash.template');
 var model = require('./index');
 
 test('create a simple view', function (t) {
@@ -11,7 +11,7 @@ test('create a simple view', function (t) {
 
 test('create a model with template and data', function (t) {
   var options = { 
-    template: Handlebars.compile('<h1>{{ hi }}</h1>'),
+    template: template('<h1><%= hi %></h1>'),
     data: { hi: 'wooo' }
   };
 
@@ -22,7 +22,7 @@ test('create a model with template and data', function (t) {
 
 test('update a model with template and data', function (t) {
   var options = { 
-    template: Handlebars.compile('<h1>{{ hi }} {{ count }}</h1>'),
+    template: template('<h1><%= hi %> <%= count %></h1>'),
     data: { hi: 'wooo', count: 0 }
   };
 
