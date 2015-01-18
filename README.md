@@ -10,7 +10,7 @@ This project is called virtual-model, but it really acts as both a model & view,
 
 ## Example
 
-```
+```js
 var template = require('lodash.template');
 var model = require('virtual-model');
 
