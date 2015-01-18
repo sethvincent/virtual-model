@@ -44,7 +44,7 @@ counter.appendTo(document.body);
 
 ### var model = require('virtual-model');
 
-### var example = model(options[, cb]);
+### var example = model(options[, callback]);
 
 The `options` object has three properties:
 
@@ -55,13 +55,15 @@ The `options` object has three properties:
 - **el**
   - _optional._ the html node that will serve as the parent element for the view
 
+The optional callback provides an `err` parameter that exists if there was an error parsing the html.
+  
 ## Methods
 
-### example.render(cb);
+### example.render([callback]);
 
 Renders the the template with the data and updates the element.
 
-The callback provides an `err` parameter that exists if there was an error parsing the html.
+The optional callback provides an `err` parameter that exists if there was an error parsing the html.
 
 ### example.set(data);
 
