@@ -12,7 +12,7 @@ This project is called virtual-model, but it really acts as both a model & view,
 
 ```
 var Handlebars = require('handlebars');
-var model = require('./index');
+var model = require('virtual-model');
 
 var str = '<div style="height:500px; background-image: url({{ img }});"';
 str += ' data-foo="{{ foo }}">{{ text }} {{ count }}</div>';
