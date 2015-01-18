@@ -1,3 +1,4 @@
+var Emitter = require('component-emitter');
 var diff = require('virtual-dom/diff');
 var patch = require('virtual-dom/patch');
 var createElement = require('virtual-dom/create-element');
@@ -5,6 +6,7 @@ var parse = require('html-parse-stringify').parse;
 var isString = require('amp-is-string');
 var virtual = require('virtual-html');
 var observify = require('observify');
+var keypath = require('observify-keypath');
 
 module.exports = VirtualModel;
 
@@ -20,9 +22,12 @@ function VirtualModel (opts, cb) {
   if (opts.el) this.appendTo(opts.el);
 
   this.data(function (value) {
+    self.emit('change', self.data());
     self.render(cb);
   });
 };
+
+Emitter(VirtualModel.prototype);
 
 VirtualModel.prototype.render = function (cb) {
   var self = this;
@@ -45,7 +50,9 @@ VirtualModel.prototype.render = function (cb) {
       self.tree = dom;
       self.el = patch(self.el, patches);
     }
-
+    
+    self.emit('update', self);
+    
     if (cb) cb(null, self);
   });
 };
@@ -55,11 +62,18 @@ VirtualModel.prototype.appendTo = function (el) {
   el.appendChild(this.el);
 };
 
-VirtualModel.prototype.set = function (data) {
-  this.data.set(data);
+VirtualModel.prototype.set = function (key, value) {
+  if (typeof key === 'object') return this.data.set(key);
+  return keypath.set(this.data, key, value)
+};
+
+VirtualModel.prototype.get = function (key) {
+  return keypath.get(this.data, key);
 };
 
 VirtualModel.prototype.html = function () {
   if (!this.renderedTemplate) this.render();
   return this.renderedTemplate;
 };
+
+

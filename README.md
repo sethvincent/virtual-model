@@ -73,9 +73,21 @@ Renders the the template with the data and updates the element.
 
 The optional callback provides an `err` parameter that exists if there was an error parsing the html.
 
-### example.set(data);
+### example.set([keypath, ]data);
 
-`data` is an object that will update the data of the model and automatically run `example.render()` to update the dom.
+`data` is an object, array, or value that will update the data of the model and automatically run `example.render()` to update the dom.
+
+Optionally specify the `keypath` for the property in the data that you'd like to set. The keypath can be nested, like this: `'some.nested.path'`, where the data in the model looks like this:
+
+```js
+{ some: { nested: { path: 'value' } } }
+```
+
+### example.get([keypath]);
+
+Get data from the model. Optionally specify a keypath to get a specific property from the data.
+
+Like the `.set` method, the keypath can be nested.
 
 ### example.html();
 
@@ -94,6 +106,12 @@ The [virtual-dom](https://github.com/Matt-Esch/virtual-dom) tree.
 ### example.el
 
 The element that can be added to the dom of the web page.
+
+## Events
+
+### example.on('change', function (value) {});
+
+### example.on('update', function (model) {});
 
 ## License
 
