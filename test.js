@@ -42,18 +42,18 @@ test('update a model with template and data', function (t) {
 
 test('get/set model with nested data', function (t) {
   var options = { 
-    template: template('<h1><%= nested.value %></h1>'),
-    data: { nested: { value: 'cool' } }
+    template: template('<h1><%= nested[0].value %></h1>'),
+    data: { nested: [{ value: 'cool' }] }
   };
   
   var example = model(options);
   example.render();
   
-  var value = example.get('nested.value');
+  var value = example.get('nested.0.value');
   t.equal(value, 'cool');
   
-  example.set('nested.value', 'awesome');
-  value = example.get('nested.value');
+  example.set('nested.0.value', 'awesome');
+  value = example.get('nested.0.value');
   t.equal(value, 'awesome');
   t.end();
 });
