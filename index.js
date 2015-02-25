@@ -2,7 +2,6 @@ var Emitter = require('component-emitter');
 var diff = require('virtual-dom/diff');
 var patch = require('virtual-dom/patch');
 var createElement = require('virtual-dom/create-element');
-var parse = require('html-parse-stringify').parse;
 var isString = require('amp-is-string');
 var virtual = require('virtual-html');
 var observify = require('observify');
