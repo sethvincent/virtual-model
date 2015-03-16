@@ -3,9 +3,15 @@ var diff = require('virtual-dom/diff');
 var patch = require('virtual-dom/patch');
 var createElement = require('virtual-dom/create-element');
 var isString = require('amp-is-string');
-var virtual = require('virtual-html');
 var observify = require('observify');
 var keypath = require('observify-keypath');
+var VNode = require('virtual-dom/vnode/vnode');
+var VText = require('virtual-dom/vnode/vtext');
+
+var convertHTML = require('html-to-vdom')({
+    VNode: VNode,
+    VText: VText
+});
 
 module.exports = VirtualModel;
 
@@ -15,7 +21,7 @@ function VirtualModel (opts, cb) {
   }
 
   var self = this;
-  this.template = opts.template || '';
+  this.template = opts.template || null;
   this.data = observify(opts.data || {});
 
   if (opts.el) this.appendTo(opts.el);
@@ -35,25 +41,22 @@ VirtualModel.prototype.render = function (cb) {
   if (isString(this.template)) this.renderedTemplate = this.template;
   else this.renderedTemplate = this.template(this.data());
 
-  virtual(this.renderedTemplate, function (err, dom) {
-    if (err) {
-      if (cb) return cb(err);
-      throw err;
-    }
+  var dom = convertHTML(this.renderedTemplate);
 
-    if (firstRender) {
-      self.tree = dom;
-      self.el = createElement(dom);
-    } else {
-      var patches = diff(self.tree, dom);
-      self.tree = dom;
-      self.el = patch(self.el, patches);
-    }
+  if (firstRender) {
+    this.tree = dom;
+    this.el = createElement(dom);
+  } else {
+    var patches = diff(this.tree, dom);
+    this.tree = dom;
+    this.el = patch(this.el, patches);
+  }
 
-    self.emit('update', self);
+  self.emit('update', this);
 
-    if (cb) cb(null, self);
-  });
+  if (cb) cb(null, this);
+  
+  return this;
 };
 
 VirtualModel.prototype.appendTo = function (el) {
