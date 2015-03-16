@@ -30,7 +30,7 @@ Emitter(VirtualModel.prototype);
 
 VirtualModel.prototype.render = function (cb) {
   var self = this;
-  
+
   var firstRender = !this.tree || !this.el;
   if (isString(this.template)) this.renderedTemplate = this.template;
   else this.renderedTemplate = this.template(this.data());
@@ -49,9 +49,9 @@ VirtualModel.prototype.render = function (cb) {
       self.tree = dom;
       self.el = patch(self.el, patches);
     }
-    
+
     self.emit('update', self);
-    
+
     if (cb) cb(null, self);
   });
 };
@@ -74,5 +74,3 @@ VirtualModel.prototype.html = function () {
   if (!this.renderedTemplate) this.render();
   return this.renderedTemplate;
 };
-
-

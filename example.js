@@ -2,7 +2,7 @@ var template = require('lodash.template');
 var model = require('./index');
 
 var str = '<div style="height:500px; background-image: url(<%= img %>);"';
-str += ' data-foo="<%= foo %>"><%= text %> <%= count %></div>';
+str += '><%= text %> <%= count %></div>';
 
 var options = {
   el: document.body,
@@ -10,10 +10,7 @@ var options = {
   data: { 
     count: 0,
     text: 'pizzzzzaaaaa',
-    img: 'http://a.fod4.com/misc/Internet%20Pizza.gif',
-    wat: {
-      nested: 'stuff'
-    }
+    img: 'http://a.fod4.com/misc/Internet%20Pizza.gif'
   }
 };
 
